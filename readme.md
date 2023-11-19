@@ -35,6 +35,7 @@ I think I should make this a sort of portfolio site in the future...
   2. Consolidate car-related tables
   3. Automobile forms:  make some of the fields not required.
 
+2022:
 * Module 5.1: update form added. Delete form redone to be like update form. Looks good.
 
 * Module 5: forms added to create and delete Automobiles. Crispy forms installed. Update not implemented yet.
