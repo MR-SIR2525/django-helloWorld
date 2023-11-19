@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+
+
+{% block header %}
+    <title>{{operation|title}} {{modelName|title}} - Andrew's Django Page</title>
+{% endblock header %}
+
+{% block extra_content %}
+   
+    <div class="w3-container pt-3 pb-5" id="home">
+        <h3 class="w3-center">Add a new {{modelName|title}} to the database.</h3>
+        <div class="py-0 px-6">
+            <form id="add_form" method="POST" action="{% url 'automobile-add' %}">
+            {% csrf_token %}
+            {{ form|crispy }}
+
+            <!-- no idea what this hidden input does or why it's here -->
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+            <button class='btn btn-primary' type="submit">Submit {{ modelName }}</button>
+        </form>  
+        </div>
+              
+    </div>
+
+{% endblock %}

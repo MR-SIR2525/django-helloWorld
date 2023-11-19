@@ -1,0 +1,37 @@
+{% extends "singleList.html" %}
+{% load crispy_forms_tags %}
+
+
+{% block pre_content %}
+    <div class="w3-center">
+        <a href="#update_form_wrapper" class="w3-button w3-blue">
+            <i class="fa fa-arrow-down w3-margin-right"></i>
+            Jump to Update Form
+        </a>
+    </div>
+{% endblock %}
+
+{% block extra_content %}
+    <div class="mb-5 pb-5 mx-5" id="update_form_wrapper">
+        <hr>
+        <h3 class="w3-center mt-5 pt-5">Update {{modelName|title}} entity form</h3>
+        <p class="w3-large" style="padding-left: 15%; padding-right: 15%; line-height: 1.4;">
+            This update is basically a POST request update where you have to enter each field
+            of information, regardless of how many fields you are actually changing. I plan to 
+            make it where you can just type the values you want to update in the future.   
+        </p>
+        
+        <form id="update_form" method="POST" action="{% url 'automobile-update' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ id_form|crispy }}
+                {{ form|crispy }}
+                {{ confirm|crispy }}
+            </div>
+            <!-- no idea what this hidden input does or why it's here -->
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+            <button class='btn btn-primary' type="submit">Send Update</button>
+        </form>
+    </div>
+
+{% endblock %}

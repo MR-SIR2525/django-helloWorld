@@ -1,0 +1,37 @@
+{% extends "singleList.html" %}
+{% load crispy_forms_tags %}
+
+
+{% block pre_content %}
+    <div class="w3-center">
+        <a href="#form_wrapper" class="w3-button w3-red">
+            <i class="fa fa-arrow-down w3-margin-right"></i>
+            Jump to Delete Form
+        </a>
+    </div>
+{% endblock %}
+
+{% block extra_content %}
+<div class="mb-5" style="padding: 2rem 4rem" id="form_wrapper">
+
+    <h3>{{operation|title}} {{modelName|title}} Form</h3>
+
+    <form action="{% url 'automobile-delete' %}" method="POST">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="automobile_id"></label>
+        {{ form.automobile_id }}
+      </div>
+
+      <div>
+        {{form.confirm}}
+        <label for="confirm">{{form.confirm.label}}</label>
+      </div>
+      <div class="form-group">
+        <input type="submit" value="Delete" class="btn w3-red">
+      </div>
+    </form>
+
+</div>
+    
+{% endblock %}

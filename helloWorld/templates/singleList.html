@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% load getattribute %}
+
+{% block header %}
+    <title>{{modelName|title}}s List - Andrew's Django Page</title>
+{% endblock header %}
+    
+
+{% block content %}
+  <div class="w3-container mt-3 mb-5 pb-4 mx-3" id="home">
+    <h3 class="w3-center">You're looking at the {{modelName|title}} model data.</h3>
+    <p class="w3-large" style="padding-left: 15%; padding-right: 15%; line-height: 1.4;">
+        I'm generating this data using a generic class-based view in my views.py file, 
+        which fills in the table, allowing me to dynamically populate this page. I 
+        then query the table column names to generate the table headers, and then take those 
+        same column names to query the table row data. So now I can create more tables and 
+        display each of them with the one Django template. This was me adhering to DRY.</p>
+      
+
+    <!-- <div class="w3-large" style="padding-left: 15%; padding-right: 15%;">
+        These three lines of code make it all possible:
+
+        <pre style="line-height: 1.4">
+    { % for car in object_list % }
+    &lt;tr&gt;
+        { % load getattribute % }
+        &lt;td&gt;{ { car|getattribute:field } }&lt;/td&gt;
+        </pre>
+
+    </div> -->
+          
+    <table class="w3-table-all ">
+        <h4 class="w3-center">{{modelName|title}} Table</h4>
+        
+        <thead>
+          {% for field in model_fields %}
+            <th>{{field}}</th>
+            {% empty %}
+              Error finding column headers (fields) for {{modelName}}
+          {% endfor %}
+        </thead>
+
+
+        {% for car in object_list %}
+        <tr>
+            {% for field in model_fields %}
+            <td>{{ car|getattribute:field }}</td>
+            
+            {% empty %}
+                Error retrieving car attributes
+            {% endfor %}
+        </tr>
+        {% empty %}
+            <p>There are no automobiles to show.</p>
+      
+        {% endfor %}
+    </table>
+
+  </div>
+
+{% endblock content %}

@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+
+{% block header %} 
+    <title>Andrew's Django Page - Home</title>
+    <style>
+        #linkedin1:hover{
+            background-color:azure;
+        }
+    </style>
+{% endblock header%}
+
+<!-- body -->
+{% block content %}
+    <!-- Header with full-height image -->
+    <header class="bgimg-1 w3-display-container w3-grayscale-min" id="home">
+        <div class="w3-display-left w3-text-white" style="padding:48px">
+            <span class="w3-jumbo w3-hide-small textShadow">Hello</span><br>
+            <span class="w3-xxlarge w3-hide-large w3-hide-medium textShadow">Hello World!</span><br>
+            <span class="w3-large textShadow">Welcome to my site! Enjoy your randomized background.*</span>
+            <p><button href=""
+                  class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off"
+                  onClick="window.location.reload();">
+                  Refresh to get new background</button></p>
+        </div>
+        <div class="w3-display-bottomleft w3-text-white w3-small " style="padding:24px 48px">
+            <p class="textShadow">*Random images from 
+                <a href="https://unsplash.com" class="w3-hover-text-blue" target="_blank">
+                Unsplash.com</a></p>
+        </div>
+        <div class="w3-display-bottomright w3-text-grey w3-large" style="padding:24px 48px">
+            <a href="https://www.linkedin.com/in/candrewblythe" target="_blank" id="linkedin1">
+                <img src="/static/images/linkedin.svg" alt="LinkedIn photo link to Andrew's LinkedIn">
+                <!-- <i class="fa fa-linkedin w3-hover-opacity" title="*Placeholder for extra effect*"></i> -->
+            </a>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <div class="w3-container py-5 px-6" id="about">
+        <!-- style="padding:128px 16px" -->
+        <h3>About my Django app</h3>
+        <p class="w3-large">
+            I created this Django web app during my time at Pearl River Community College as a way to 
+            practice my web development/Django skills while simultaneously finishing my full-stack 
+            web dev homework. Because I like cars, I decided to use information about them to practice
+            and demonstrate database CRUD interaction (Create, Read, Update, and Delete). You can 
+            interact with my car data with the navigation bar at the top.
+        </p> 
+        <h3>About Me</h3>   
+        <p>
+            ...
+        </p>
+        <!-- and very important
+            programming concept, DRY, which stands for "Don't Repeat Yourself". -->
+        
+        <div class="w3-row-padding w3-center" style="margin-top:64px">
+            <div class="w3-quarter">
+                <i class="fa fa-desktop w3-margin-bottom w3-jumbo w3-center"></i>
+                <p class="w3-large">Django</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore.</p>
+            </div>
+            <div class="w3-quarter">
+                <i class="fa fa-heart w3-margin-bottom w3-jumbo"></i>
+                <p class="w3-large">Django</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore.</p>
+            </div>
+            <div class="w3-quarter">
+                <i class="fa fa-diamond w3-margin-bottom w3-jumbo"></i>
+                <p class="w3-large">Django</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore.</p>
+            </div>
+            <div class="w3-quarter">
+                <i class="fa fa-cog w3-margin-bottom w3-jumbo"></i>
+                <p class="w3-large">Django</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Promo Section - "We know design" -->
+    <div class="w3-container w3-light-grey" style="padding:128px 16px">
+        <div class="w3-row-padding">
+            <div class="w3-col m6">
+                <h3>We know design.</h3>
+                <p>See what I mean?</p>
+                <p><a href="#work" class="w3-button w3-black"><i class="fa fa-th"> </i>
+                    Next section</a></p>
+            </div>
+            <div class="w3-col m6">
+                <img class="w3-image w3-round-large" src="https://mr-sir2525.github.io/webdev/Module1/Module1Assignment/IMG_0248.GIF" alt="Dwayne 'The Rock' Johnson" width="700"
+                    height="394">
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Work Section -->
+    <div class="w3-container" style="padding:128px 16px" id="work">
+        <h3 class="w3-center">More Pictures</h3>
+        <p class="w3-center w3-large">Static images from W3Schools</p>
+
+        <div class="w3-row-padding" style="margin-top:64px">
+            <div class="w3-col l3 m6">
+                <img src="https://www.w3schools.com/w3images/tech_mic.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity"
+                    alt="A microphone">
+            </div>
+            <div class="w3-col l3 m6">
+                <img src="https://www.w3schools.com/w3images/tech_phone.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity"
+                    alt="A phone">
+            </div>
+            <div class="w3-col l3 m6">
+                <img src="https://www.w3schools.com/w3images/tech_drone.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity"
+                    alt="A drone">
+            </div>
+            <div class="w3-col l3 m6">
+                <img src="https://www.w3schools.com/w3images/tech_sound.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity"
+                    alt="Soundbox">
+            </div>
+        </div>
+
+        <div class="w3-row-padding w3-section">
+            <div class="w3-col l3 m6">
+                <img src="https://www.w3schools.com/w3images/tech_tablet.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity"
+                    alt="A tablet">
+            </div>
+            <div class="w3-col l3 m6">
+                <img src="https://www.w3schools.com/w3images/tech_camera.jpg" style="width:100%" onclick="onClick(this)" class="w3-hover-opacity"
+                    alt="A camera">
+            </div>
+            <div class="w3-col l3 m6">
+                <img src="https://www.w3schools.com/w3images/tech_typewriter.jpg" style="width:100%" onclick="onClick(this)"
+                    class="w3-hover-opacity" alt="A typewriter">
+            </div>
+            <div class="w3-col l3 m6">
+                <img src="https://www.w3schools.com/w3images/tech_tableturner.jpg" style="width:100%" onclick="onClick(this)"
+                    class="w3-hover-opacity" alt="A tableturner">
+            </div>
+        </div>
+    </div>
+{% endblock content %}

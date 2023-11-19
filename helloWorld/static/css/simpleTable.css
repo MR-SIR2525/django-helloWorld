@@ -1,0 +1,18 @@
+
+.simpletable {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.simpletable td, 
+.simpletable th
+{
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+.simpletable tr:nth-child(even) {
+    background-color: #eeeeee;
+}

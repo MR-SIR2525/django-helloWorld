@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% load getattribute %}
+
+{% block header %}
+<title>Car Stats - Andrew's Django...</title>
+{% endblock header %}
+
+
+{% block content %}
+
+<div class="w3-container mt-3 mb-5 pb-5 mx-3" id="home">
+  <h3 class="w3-center">Demonstration of Getting Data from Database in Django</h3>
+
+  <p class="w3-center w3-large" style="padding-left: 18%; padding-right: 18%;">
+    We've got automobiles, internal combustion engine cars,
+    and electric cars here. All tables are separate and generate dynamically.
+  </p>
+
+  {% for item in data %}
+    <!-- Each table gets a section -->
+    <section class="w3-container w3-card mb-4 pb-3">
+      <h4 class="w3-center">{{ item.verbose_name_plural }}</h4>
+
+      <table class="w3-table-all">
+        <thead>
+          <tr>
+            {% for field in item.fields %}
+            <th>{{ field.verbose_name }}</th>
+            {% endfor %}
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for obj in item.objects %}
+          <tr>
+            {% for field in item.fields %}
+            <td>{{ obj|getattribute:field.name }}</td>
+            {% endfor %}
+          </tr>
+          {% empty %}
+          <tr>
+            <td colspan="100">There are no {{ item.verbose_name_plural }} to show.</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </section>
+      {% empty %}
+      <p>Error retrieving any automobiles.</p>
+  {% endfor %}
+
+
+</div>
+
+{% endblock content %}

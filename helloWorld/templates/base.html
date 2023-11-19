@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/w3css_4_w3.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <!-- static css -->
+    <link rel="stylesheet" href="{% static 'css/simpleTable.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dropdownNav.css' %}"/>
+    <!-- <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"> -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+
+    {% block header %}{% endblock header %}
+
+
+    <style>
+        body,
+        html {
+            height: 100%;
+            line-height: 1.8;
+        }
+
+        /* Full height image header */
+        .bgimg-1 {
+            background-position: center;
+            background-size: cover;
+            background-image: url("https://source.unsplash.com/random/1366x768");
+            /* in the future, probably optimize this to pull lower resolutions
+               for devices that have lower resolutions...  a common pc screen is 1366x768 
+               or 1920×1080. */
+            min-height: 100%;
+        }
+
+        .w3-bar .w3-button {
+            padding: 16px;
+        }
+        /*{% block style %}{% endblock style %}*/
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar (main) -->
+    <div class="w3-top">
+        <div class="w3-bar w3-black w3-card" id="myNavbar">
+            <!-- Left side -->
+            <a href="/" class="w3-bar-item w3-button w3-wide" title="Home">Andrew's Django Page</a>
+            
+            <!-- Right side -->
+            <div class="w3-right w3-hide-small">
+                <div class="dropdown">
+                    <button class="dropbtn w3-button">
+                        Database Change Forms
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                      <a href="{% url 'automobile-add' %}">Add Automobile</a>
+                      <a href="{% url 'automobile-update' %}">Update Automobile</a>
+                      <a href="{% url 'automobile-delete' %}">Delete Automobile</a>
+                      {% comment %} <a href="{% url 'add-ice-car' %}">Add I.C.E. Car</a>
+                      <a href="{% url 'add-electric-car' %}">Add Electric Car</a> {% endcomment %}
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <button class="dropbtn w3-button">
+                        Database Data
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                      <a href="{% url 'automobile-stats' %}">Automobiles List</a>
+                      <a href="{% url 'ice-car-stats' %}">I.C.E. Cars List</a>
+                      <a href="{% url 'electric-car-stats' %}">Electric Cars List</a>
+                      <a href="{% url 'carstats' %}">All Three</a>
+                    </div>
+                </div>
+
+                <a href="/#about" class="w3-bar-item w3-button">ABOUT</a>
+                <a href="/#work" class="w3-bar-item w3-button"><i class="fa fa-th"></i> WORK</a>
+            </div>
+            <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+    
+            <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium"
+                onclick="w3_open()">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Smaller-screen nav on side -->
+    <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none"
+        id="mySidebar">
+
+        <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
+        
+        <div class="topnav responsive" id="myTopnav">
+            <div class="dropdown">
+                <button class="dropbtn w3-bar-item w3-button">
+                    Database Change Forms
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="{% url 'automobile-stats' %}">Automobiles List</a>
+                    <a href="{% url 'ice-car-stats' %}">I.C.E. Cars List</a>
+                    <a href="{% url 'electric-car-stats' %}">Electric Cars List</a>
+                    <a href="{% url 'carstats' %}">All Three</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="topnav responsive" id="myTopnav">
+            <div class="dropdown">
+                <button class="dropbtn w3-bar-item w3-button">
+                    Database Data
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="{% url 'automobile-add' %}">Add Automobile</a>
+                    <a href="{% url 'automobile-update' %}">Update Automobile</a>
+                    <a href="{% url 'automobile-delete' %}">Delete Automobile</a>
+                </div>
+            </div>
+        </div>
+        
+        <a href="/#about" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT</a>
+        <a href="/#work" onclick="w3_close()" class="w3-bar-item w3-button">WORK</a>
+    </nav>
+
+    <!-- Alerts -->
+    <div id="alert-container" class="mt-5 pt-4 mx-3">
+        {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+              {{ message }}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+    {% block pre_content %}{% endblock %}
+
+    {% block content %}{% endblock content %}
+
+    {% block extra_content %}{% endblock %}
+    
+
+    <!-- Footer -->
+    <footer class="w3-center w3-black py-4 page-footer">
+        <!-- #home is the logo at the top, FYI -->
+        <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>
+            Top of page</a>
+        {% comment %} <div class="w3-xlarge w3-section">
+            <i class="fa fa-facebook-official w3-hover-opacity"></i>
+            <i class="fa fa-instagram w3-hover-opacity"></i>
+            <i class="fa fa-snapchat w3-hover-opacity"></i>
+            <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+            <i class="fa fa-twitter w3-hover-opacity"></i>
+            <i class="fa fa-linkedin w3-hover-opacity"></i>
+        </div> {% endcomment %}
+        <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank"
+                class="w3-hover-text-green">w3.css</a></p>
+    </footer>
+
+    {% include "scripts.html" %}
+
+</body>
+
+</html>
