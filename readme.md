@@ -30,7 +30,10 @@ I think I should make this a sort of portfolio site in the future...
 
 
 ## Change Log 
-* August 2023: 
+January 2024:
+  1. Integrate Docker stuff; update readme
+
+August 2023: 
   1. Fix 'all three' carstats page - needs to display all the tables
   2. Consolidate car-related tables
   3. Automobile forms:  make some of the fields not required.
